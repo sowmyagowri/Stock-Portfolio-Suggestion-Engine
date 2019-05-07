@@ -1,26 +1,41 @@
 <!DOCTYPE html>
 <style>
-
-  .card {
+.highlights .card {
     /* Add shadows to create the "card" effect */
-    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+    box-shadow: 0px 0px 4px 1px rgba(0, 0, 0, 0.025);
     transition: 0.3s;
-    width:40%;
+    border-radius: 4px;
+    height: 100%;
+    padding: 3rem;
+    width : 50%;
+    
 }
-
 /* On mouse-over, add a deeper shadow */
 .card:hover {
-    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+    box-shadow: 0px 0px 4px 1px rgba(0, 0, 0, 0.025);
 }
-
 /* Add some padding inside the card container */
 .container1 {
     padding: 2px 16px;
 }
 
-.container{
-    color:white;
+.highlights {
+    width: 100%;
+    margin: 2.5rem 0;
+    display: -moz-flex;
+    display: -webkit-flex;
+    display: -ms-flex;
+    display: flex;
+    -moz-flex-wrap: wrap;
+    -webkit-flex-wrap: wrap;
+    -ms-flex-wrap: wrap;
+    flex-wrap: wrap;
+    -moz-align-items: -moz-stretch;
+    -webkit-align-items: -webkit-stretch;
+    -ms-align-items: -ms-stretch;
+    align-items: stretch;
 }
+
 /* Style the video: 100% width and height to cover the entire window */
 #myVideo {
     position: fixed;
@@ -35,24 +50,56 @@
     list-style-type:none;
 }
 
+#header {
+    -moz-align-items: center;
+    -webkit-align-items: center;
+    -ms-align-items: center;
+    align-items: center;
+    display: -moz-flex;
+    display: -webkit-flex;
+    display: -ms-flex;
+    display: flex;
+    -moz-justify-content: space-between;
+    -webkit-justify-content: space-between;
+    -ms-justify-content: space-between;
+    justify-content: space-between;
+    background: #111111;
+    color: rgba(255, 255, 255, 0.5);
+    cursor: default;
+    height: 3.25rem;
+    left: 0;
+    line-height: 3.25rem;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 10001;
+}
+
+header.special {
+  text-align: center;
+  margin-bottom: 4rem; }
+  header.special p {
+    max-width: 75%;
+    margin-left: auto;
+    margin-right: auto; }
+
+.inner {
+    margin: 0 auto;
+}
+
+.def {
+  width:40%;
+}
 </style>
 
 {% extends "bootstrap/base.html" %}
-
-{# Loads some of the macros included with Flask-Bootstrap. We are using the
-   utils module here to automatically render Flask's flashed messages in a
-   bootstrap friendly manner #}
-{% import "bootstrap/utils.html" as utils %}
-
 
 <html lang="en">
 
   <head>
     <meta charset="utf-8">
     <title>Stock Portfolio Suggestion Engine</title>
-
     <link rel= "stylesheet" type= "text/css" href= "{{ url_for('static',filename='css/stock-portfolio-homepage.css') }}">
-    <script type="text/javascript" src="{{ url_for('static', filename='stock_profile.js') }}"></script>
 {#<script src="jquery-3.3.1.min.js"></script>#}
 
 {#      <script#}
@@ -78,69 +125,79 @@
             });
         </script>
   </head>
-<body>
+  
+<body class="is-preload">
 {% block content %}
-<div class="container" align="center">
-    <h1>Welcome to your Stock Portfolio</h1>
-</div>
-
-<!-- The video -->
-<video autoplay muted loop id="myVideo" width="1000" height="20">
-  <source src="../static/images/numbers.mp4" type="video/mp4">
-</video>
-
+<!-- Header -->
+  <header class="header" align="center">
+      <h1 class="logo">Stock Portfolio Manager</h1>
+  </header>
 <div>
-  <div>
+ 
+  <div class = "inner">
       <form id="contact" method="post" action="/stockportfolio" class="container">
       <fieldset>
       	<!--<br>-->
-        <!--<label class="jumbotron" for="investment_value">Enter your investment value 22:</label>-->
+        <!--<label class="jumbotron" for="investment_value">Enter your investment value:</label>-->
         <!--<input type="text" id="investment_value" name="investment_value" /><br><br>-->
+
         <div class="form-group">
-          <label for="investment_value">Enter your investment value</label>
-          <input style="width: 18%;" type="text" class="form-control" id="investment_value" name="investment_value" placeholder="Enter your investment value">
-        </div>
-        <label for="allotment" class="investment-value-label">Select the investment strategies (one or more) :</label><br>
-        <div class="card">
-          <img src="../static/images/ethical.jpg" alt="Avatar" style="width:100%">
-          <div class="container1" style="margin-top: 15px;">
-            <input class= "single-checkbox" type="checkbox" name="strategy" value="Ethical Investing"><h4 style="margin-top: -22px;
-            margin-left: 20px;"><b>Ethical Investing</b></h4>
-          </div>
-        </div>
+          <h3>Enter your investment value</h3>
+          <input type="text" class="form-control" id="investment_value" name="investment_value" placeholder="Enter your investment value">
 
-        <div class="card" style="float: right;margin-top: -355px;margin-right: 139px;">
-          <img src="../static/images/growthInvesting.jpg" alt="Avatar" style="width:100%">
-          <div class="container1" style="margin-top: 15px;">
-            <input class= "single-checkbox" type="checkbox" name="strategy" value="Growth Investing"><h4 style="margin-top: -22px;
-            margin-left: 20px;"><b>Growth Investing</b></h4>
-          </div>
         </div>
-
-        <div class="card" style="margin-top: 110px;">
-          <img src="../static/images/index.jpg" alt="Avatar" style="width:100%">
-          <div class="container1" style="margin-top: 15px;">
-            <input class= "single-checkbox" type="checkbox" name="strategy" value="Index Investing"><h4 style="margin-top: -22px;
-            margin-left: 20px;"><b>Index Investing</b></h4>
-          </div>
+        <div>
+            <h3>Select the investment strategies (one or more) :</h3>
         </div>
-
-        <div class="card" style="float: right;margin-top: -390px;margin-right: 139px;">
-          <img src="../static/images/quality.jpg" alt="Avatar" style="width:100%">
-          <div class="container1" style="margin-top: 15px;">
-            <input class= "single-checkbox" type="checkbox" name="strategy" value="Quality Investing"><h4 style="margin-top: -22px;
-            margin-left: 20px;"><b>Quality Investing</b></h4>
-          </div>
-        </div>
-
-        <div class="card" style="margin-top: 110px;">
-          <img src="../static/images/value.jpg" alt="Avatar" style="width:100%">
-          <div class="container1" style="margin-top: 15px;">
-            <input class= "single-checkbox" type="checkbox" name="strategy" value="Value Investing"><h4 style="margin-top: -22px;
-            margin-left: 20px;"><b>Value Investing</b></h4>
-          </div>
-        </div>
+        <div class="highlights">
         
+        <div class="card">
+          <div class="container1" style="margin-top: 5%; margin-bottom: 5%">
+            <div style = "margin-bottom: 5%">
+            <img src="../static/images/ethical.jpg" alt="Avatar" style="width:500px; height:200px;"></div>
+            <div><input class= "single-checkbox" type="checkbox" name="strategy" value="Ethical Investing"><h4 style="margin-top: -22px;
+            margin-left: 20px;"><b>Ethical Investing</b></h4></div>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="container1" style="margin-top: 5%; margin-bottom: 5%">
+              <div style = "margin-bottom: 5%">
+              <img src="../static/images/ethical.jpg" alt="Avatar" style="width:500px; height:200px;"></div>
+              <div><input class= "single-checkbox" type="checkbox" name="strategy" value="Growth Investing"><h4 style="margin-top: -22px;
+              margin-left: 20px;"><b>Growth Investing</b></h4></div>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="container1" style="margin-top: 5%; margin-bottom: 5%">
+              <div style = "margin-bottom: 5%">
+              <img src="../static/images/ethical.jpg" alt="Avatar" style="width:500px; height:200px;"></div>
+              <div>
+              <input class= "single-checkbox" type="checkbox" name="strategy" value="Index Investing"><h4 style="margin-top: -22px;
+              margin-left: 20px;"><b>Index Investing</b></h4></div>
+            </div>
+        </div>
+
+        <div class="card">
+        <div class="container1" style="margin-top: 5%; margin-bottom: 5%">
+            <div style = "margin-bottom: 5%">
+            <img src="../static/images/ethical.jpg" alt="Avatar" style="width:500px; height:200px;"></div>
+            <div>
+            <input class= "single-checkbox" type="checkbox" name="strategy" value="Quality Investing"><h4 style="margin-top: -22px;
+            margin-left: 20px;"><b>Quality Investing</b></h4></div>
+          </div>
+          </div>
+        
+        <div class="card">
+           <div class="container1" style="margin-top: 5%; margin-bottom: 5%">
+              <div style = "margin-bottom: 5%">
+              <img src="../static/images/ethical.jpg" alt="Avatar" style="width:500px; height:200px;"></div>
+              <div><input class= "single-checkbox" type="checkbox" name="strategy" value="Value Investing"><h4 style="margin-top: -22px;
+              margin-left: 20px;"><b>Value Investing</b></h4></div>
+           </div>
+        </div>
+      </div>
         <!--<input type="submit" name="submit" id="submit" value="Calculate" />-->
         <input style="margin-top: 40px" class="btn btn-primary" type="submit" name="submit" id="submit" value="Invest!!">
       </fieldset>
