@@ -1,0 +1,161 @@
+<!DOCTYPE HTML>
+<!--
+	Industrious by TEMPLATED
+	templated.co @templatedco
+	Released for free under the Creative Commons Attribution 3.0 license (templated.co/license)
+-->
+<html>
+	<head>
+		<title>Stock Portfolio Manager</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<meta name="description" content="" />
+		<meta name="keywords" content="" />
+		<link rel="stylesheet" href="{{ url_for('static',filename='css/main.css') }}" />
+		<script src="{{ url_for('static',filename='js/Chart.bundle.js') }}"></script>
+		<script>
+			function checkSelected(element) {
+				var count = 0;
+				var group = document.getElementsByName("checkbox-group");
+				for (var i = 0; i < group.length; i++) {
+					if (group[i].checked) {
+						count = count + 1
+					}
+				}
+				console.log(count);
+				if (count > 2)
+				{
+					alert('Select at max 2 options!');
+					element.checked = false;
+				}
+			}
+		</script>
+	</head>
+	<body class="is-preload">
+
+		<!-- Header -->
+			<header id="header">
+				<a class="logo">Stock Portfolio Manager</a>
+			</header>
+
+		<!-- Highlights -->
+			<section class="wrapper">
+				<div class="inner">
+					<header class="special">
+						<h2>{{report_data['strategies_header']}} Report</h2>
+						<p>Based on the selected investing options your investment after a period of 10 years will be ${{ report_data['strategy']['projected_amount'] }}</p>
+					</header>
+					<div class="col-12">
+					   <div class="row">
+						   <div class="col-12">
+
+							<table class="table table-striped">
+							  <thead>
+								<tr>
+								  <th>Symbol</th>
+								  <th>Company</th>
+								  <th>Latest Price</th>
+								  <th>Holding Ratio</th>
+								  <th>Holding Value</th>
+								</tr>
+							  </thead>
+							  <tbody>
+
+								{% for sym in report_data['strategy']['data'].keys() %}
+
+
+								<tr>
+								  <td>{{ sym }}</td>
+								  <td>{{ report_data['strategy']['data'][sym]['companyName'] }}</td>
+								  <td>{{ report_data['strategy']['data'][sym]['latest'] }}</td>
+								  <td>{{ report_data['strategy']['data'][sym]['ratio'] }} %</td>
+								  <td>{{ report_data['strategy']['data'][sym]['amount'] }} </td>
+								</tr>
+
+								{% endfor %}
+
+							  </tbody>
+							</table>
+
+						   </div>
+					   </div>
+
+						<br><br>
+
+						</div>
+
+					   <div class="row">
+							<div class="col-6">
+								<center>
+									<h4>Portfolio Past Performance</h4>
+								</center>
+								<canvas id="myChart" width="400" height="400"></canvas>
+								<script>{% autoescape false %}
+									var ctx = document.getElementById("myChart").getContext('2d');
+									var myChart = new Chart(ctx, {
+										type: 'line',
+										data: {
+											labels:{{ report_data['strategy']['history_label'] }},
+											datasets: [{
+												label: 'Share per day',
+												data: {{ report_data['strategy']['history_data'] }},
+												backgroundColor: [
+													'#E57373',
+
+												],
+												borderColor: [
+													'#D32F2F',
+												],
+												borderWidth: 1
+											}]
+										},
+										options: {
+											scales: {
+												yAxes: [{
+													ticks: {
+														beginAtZero:false
+													}
+												}]
+											}
+										}
+									});
+								</script>
+							</div>
+
+							 <div class="col-6">
+								<center>
+									<h4>Portfolio Ratio</h4>
+								</center>
+								<canvas id="myChart1" width="400" height="400"></canvas>
+								<script>
+									var ctx1 = document.getElementById("myChart1").getContext('2d');
+									 var data = {
+									 datasets: [{"label":"","data":{{ report_data['strategy']['pie_values'] }},"backgroundColor":["#B71C1C","#FF8A80","#D32F2F","#EF5350","#EF9A9A","#FFCDD2"]}],
+
+									 // These labels appear in the legend and in the tooltips when hovering different arcs
+									 labels:{{ report_data['strategy']['pie_labels'] }},
+									};
+									 var myDoughnutChart = new Chart(ctx1, {
+									 type: 'doughnut',
+									 data: data
+								 }); {% endautoescape %}
+								 </script>
+							</div>
+
+					   </div>
+
+			</div>
+		</section>
+
+		<!-- Footer -->
+			<footer id="footer">
+			</footer>
+
+		<!-- Scripts -->
+			<script src="{{ url_for('static',filename='js/jquery.min.js') }}"></script>
+			<script src="{{ url_for('static',filename='js/browser.min.js') }}"></script>
+			<script src="{{ url_for('static',filename='js/breakpoints.min.j') }}s"></script>
+			<script src="{{ url_for('static',filename='js/util.js') }}"></script>
+			<script src="{{ url_for('static',filename='js/main.js') }}"></script>
+	</body>
+</html>

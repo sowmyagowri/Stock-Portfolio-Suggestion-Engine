@@ -1,0 +1,136 @@
+<!DOCTYPE HTML>
+<!--
+	Industrious by TEMPLATED
+	templated.co @templatedco
+	Released for free under the Creative Commons Attribution 3.0 license (templated.co/license)
+-->
+<html>
+	<head>
+		<title>Stock Portfolio Manager</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<meta name="description" content="" />
+		<meta name="keywords" content="" />
+		<link rel="stylesheet" href="{{ url_for('static',filename='css/main.css') }}" />
+		<script>
+			function checkSelected(element) {
+				var count = 0;
+				var group = document.getElementsByName("checkbox-group");
+				for (var i = 0; i < group.length; i++) {
+					if (group[i].checked) {
+						count = count + 1
+					}
+				}
+				console.log(count);
+				if (count > 2)
+				{
+					alert('Select at max 2 options!');
+					element.checked = false;
+				}
+			}
+		</script>
+	</head>
+	<body class="is-preload">
+
+		<!-- Header -->
+			<header id="header">
+				<a class="logo">Stock Portfolio Manager</a>
+			</header>
+
+		<!-- Highlights -->
+			<section class="wrapper">
+				<div class="inner">
+						<form method="post" name="options" action="report">
+					<header class="special">
+						<h2>Enter Investment Details</h2>
+						<div class="col-12">
+								<input type="number" name="amount" id="amount" value="amount" placeholder="Amount" min="5000" required/>
+							</div>
+					</header>
+					<h4>Select Investment Options</h4>
+					<div class="highlights">
+						<section>
+							<div class="content">
+								<header>
+									<a href="#" class="icon fa-vcard-o"><span class="label">Icon</span></a>
+									<h3>Ethical Investing</h3>
+								</header>
+								<div class="col-6 col-12-small">
+										<input type="checkbox" value="ethical" id="checkbox-ethical" onclick="checkSelected(this)" name="checkbox-group">
+										<label for="checkbox-ethical"></label>
+								</div>
+							</div>
+						</section>
+						<section>
+							<div class="content">
+								<header>
+									<a href="#" class="icon fa-files-o"><span class="label">Icon</span></a>
+									<h3>Growth Investing</h3>
+								</header>
+								<div class="col-6 col-12-small">
+										<input type="checkbox" value="growth" id="checkbox-growth" onclick="checkSelected(this)" name="checkbox-group">
+										<label for="checkbox-growth"></label>
+								</div>
+							</div>
+						</section>
+						<section>
+							<div class="content">
+								<header>
+									<a href="#" class="icon fa-floppy-o"><span class="label">Icon</span></a>
+									<h3>Index Investing</h3>
+								</header>
+								<div class="col-6 col-12-small">
+										<input type="checkbox" value="index" id="checkbox-index" onclick="checkSelected(this)" name="checkbox-group">
+										<label for="checkbox-index"></label>
+								</div>
+							</div>
+						</section>
+						<section>
+							<div class="content">
+								<header>
+									<a href="#" class="icon fa-line-chart"><span class="label">Icon</span></a>
+									<h3>Quality Investing</h3>
+								</header>
+								<div class="col-6 col-12-small">
+										<input type="checkbox" value="quality" id="checkbox-quality" onclick="checkSelected(this)" name="checkbox-group">
+										<label for="checkbox-quality"></label>
+								</div>
+							</div>
+						</section>
+						<section>
+							<div class="content">
+								<header>
+									<a href="#" class="icon fa-paper-plane-o"><span class="label">Icon</span></a>
+									<h3>Value Investing</h3>
+								</header>
+								<div class="col-6 col-12-small">
+										<input type="checkbox" value="value" id="checkbox-alpha" onclick="checkSelected(this)" name="checkbox-group">
+										<label for="checkbox-alpha"></label>
+								</div>
+							</div>
+						</section>
+						<section>
+					</section>
+					</div>
+					<div class="col-12">
+						<ul class="actions">
+							<li><input type="submit" value="Submit Form" class="primary" id="compute-group" /></li>
+							<li><input type="reset" value="Reset" /></li>
+						</ul>
+					</div>
+				</form>
+			</div>
+		</section>
+
+		<!-- Footer -->
+			<footer id="footer">
+			</footer>
+
+		<!-- Scripts -->
+			<script src="{{ url_for('static',filename='js/jquery.min.js') }}"></script>
+			<script src="{{ url_for('static',filename='js/browser.min.js') }}"></script>
+			<script src="{{ url_for('static',filename='js/breakpoints.min.j') }}s"></script>
+			<script src="{{ url_for('static',filename='js/util.js') }}"></script>
+			<script src="{{ url_for('static',filename='js/main.js') }}"></script>
+	</body>
+</html>
