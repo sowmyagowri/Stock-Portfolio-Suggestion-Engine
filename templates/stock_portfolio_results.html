@@ -3,18 +3,32 @@
 <head>
     <meta charset="UTF-8">
     <title>Stock Portfolio</title>
-
+    <link rel="stylesheet" href="{{ url_for('static',filename='css/main.css') }}" />
+    <script src="{{ url_for('static',filename='js/Chart.bundle.js') }}"></script>
     <script src="https://code.highcharts.com/highcharts.js"></script>
     <script src="https://code.highcharts.com/modules/exporting.js"></script>
     <script src="https://code.highcharts.com/modules/export-data.js"></script>
 </head>
-<body>
-
-<div id="pie_chart_stock" style="min-width: 30%; max-width: 30%; height: 40%; margin: 0 auto; float: left"></div>
-<div id="pie_chart_shares" style="min-width: 30%; max-width: 30%; height: 40%; margin: 0 auto; float: left"></div>
-<div id="line-chart_overall" style="min-width: 30%; max-width: 30%; height: 40%; margin: 0 auto; float: left"></div>
-<div id="stock_per_company_1" style="min-width: 45%; max-width: 50%; height: 40%; margin: 0 auto; float: left"></div>
-
+<body class="is-preload">
+<header class="special">
+    <h2>{{ pgrd[0][0] }}</h2>
+</header>
+<div class="row">
+    <div class="col-6">
+        <div id="pie_chart_stock" ></div>
+    </div>
+    <div class="col-6">
+        <div id="pie_chart_shares"></div>
+    </div>
+</div>
+<div class="row" style = "margin-top: 10%">
+    <div class="col-6">
+        <div id="line-chart_overall" ></div>
+    </div>
+    <div class="col-6">
+        <div id="stock_per_company_1"></div>
+    </div>
+</div>
 <script>
 
     Highcharts.chart('pie_chart_stock', {
@@ -113,7 +127,7 @@
         text: 'Stock analysis for investment strategies'
     },
     subtitle: {
-        text: 'Irregular time data in Highcharts JS'
+        text: 'Irregular time data'
     },
     xAxis: {
         type: 'datetime',
@@ -144,7 +158,6 @@
         }
     },
 
-    colors: ['#6CF', '#39F', '#06C', '#036', '#000'],
 
     series: [{
         name: '{{ fgr[0][0] }}',
