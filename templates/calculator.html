@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>HTML5 Form</title>
+    <link rel= "stylesheet" type= "text/css" href= "{{ url_for('static',filename='css/calculator-stylesheet.css') }}">
+  </head>
+
+<body>
+    <form id="contact" method="post" action="outcome" class="container">
+      <fieldset>
+      	<br>
+
+        <label for="stocksymbol">Stock Symbol:</label>
+        <input type="text" id="stocksymbol" name="stocksymbol"><br><br>
+
+        <label for="allotment">Allotment:</label>
+        <input type="text" id="allotment" name="allotment"><br><br>
+
+        <label for="final_price">Final Share Price:</label>
+        <input type="text" id="final_price" name="final_price"><br><br>
+
+        <label for="selling_commission">Sell Commission:</label>
+        <input type="text" id="selling_commission" name="selling_commission"><br><br>
+
+        <label for="initial_price">Initial Share price:</label>
+        <input type="text" id="initial_price" name="initial_price"><br><br>
+
+        <label for="buying_commission">Buy Commission:</label>
+        <input type="text" id="buying_commission" name="buying_commission"><br><br>
+
+        <label for="tax_rate">Capital Gain Tax Rate:</label>
+        <input type="text" id="tax_rate" name="tax_rate"><br><br>
+
+        <input type="submit" name="submit" id="submit" value="Calculate" />
+      </fieldset>
+    </form>
+</body>
+</html>

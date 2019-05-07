@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+  <head>
+  </head>
+  <body>
+    <form action="/" method="POST">
+      <div style="background-color:black;color:white;padding:30px;">
+      <p align="center"><h2>Stock Price Calculator</h2>
+      </div>
+      <p align ="center">
+        <h2>PROFIT REPORT: </h2>
+        The symbol entered was {{symbol}}
+        <br>Close today : {{close_today}}
+        <!-- <br>Proceeds : {{proceeds}}
+        <br>Cost : {{cost}}
+
+        <br><br>Cost details:
+        <br>Total Purchase Price {{allotment * initialSharePrice}}
+        <br>Buy Commission= {{buyCommission}}
+        <br>Sell Commission= {{commission}}
+        <br>Tax on Capital Gain = {{(capitalGain/100) *capitalGain1}}
+        <br><br><br>
+        Net Profit<br>${{net}}
+        <br>Return on Investment<br>{{roi}} % -->
+        <br>To break even, you should have a final share price of <br>${{breakeven}}
+        <br>***************************************************************************
+      </p>
+      <input type="button" value="Back" onclick="window.history.back()" />
+
+    </form>
+  </body>
+</html>

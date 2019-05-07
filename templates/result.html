@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel= "stylesheet" type= "text/css" href= "{{ url_for('static',filename='css/result-stylesheet.css') }}">
+</head>
+<body>
+
+
+<h1>Final outcome : </h1>
+<table id="calculator">
+  <tr>
+    <th>Stock Symbol</th>
+    <th>Proceeds</th>
+    <th>Cost</th>
+
+  </tr>
+  <tr>
+    <td>{{stocksymbol}}</td>
+    <td>{{proceeds}}</td>
+    <td>{{cost}}</td>
+
+  </tr>
+</table>
+<br>
+<table id="calculator">
+  <tr>
+    <th colspan="3">Cost Details</th>
+
+  </tr>
+  <tr>
+    <td>Total Purchase Price </td>
+    <td>{{final_outcome}}</td>
+  </tr>
+  <tr>
+    <td>Buy Commission </td>
+    <td>{{buy_commission}}</td>
+  </tr>
+  <tr>
+    <td>Sell Commission: </td>
+    <td>{{sell_commission}}</td>
+  </tr>
+  <tr>
+    <td>Tax on Capital Gain: </td>
+    <td> ${{tax_on_capital_gain}}</td>
+  </tr>
+
+</table>
+<br>
+<table id="calculator">
+  <tr>
+    <th>Net Profit</th>
+  </tr>
+  <tr>
+    <td>${{net_profit}} </td>
+  </tr>
+</table>
+<br>
+<table id="calculator">
+  <tr>
+    <th>Return on Investment</th>
+  </tr>
+  <tr>
+    <td>{{roi}}% </td>
+  </tr>
+</table>
+<br>
+<table id="calculator">
+  <tr>
+    <th>To break even, you should have final share price of: </th>
+  </tr>
+  <tr>
+    <td>${{break_even_price}} </td>
+  </tr>
+</table>
+
+</body>
+</html>

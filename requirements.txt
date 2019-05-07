@@ -1,0 +1,7 @@
+Flask
+sqlalchemy
+gunicorn
+alpha_vantage
+flask-bootstrap
+sqlalchemy
+datetime

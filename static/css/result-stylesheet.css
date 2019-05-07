@@ -1,0 +1,25 @@
+body {
+    margin: 5% 10%;
+}
+#calculator {
+    font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+    border-collapse: collapse;
+    width: 100%;
+}
+
+#calculator td, #calculator th {
+    border: 1px solid #ddd;
+    padding: 8px;
+}
+
+#calculator tr:nth-child(even){background-color: #f2f2f2;}
+
+#calculator tr:hover {background-color: #ddd;}
+
+#calculator th {
+    padding-top: 12px;
+    padding-bottom: 12px;
+    text-align: left;
+    background-color: #4CAF50;
+    color: white;
+}
