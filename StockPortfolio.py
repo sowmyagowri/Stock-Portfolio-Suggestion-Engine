@@ -119,11 +119,11 @@ def addRegion():
     print("investment_value", investment_value)
     print("investment_strategies", investment_strategies)
 
-    stock_symbol_array = ['AAPL', 'MSFT', 'ADBE']
-    growth_array = ['V', 'MA', 'AXP']
-    index_array = ['TSLA', 'F', 'HMC']
-    quality_array = ['COST', 'WMT', 'BBY']
-    value_array = ['FB', 'TWTR', 'GOOG']
+    ethical_stock_symbol_array = ['AAPL', 'MSFT', 'ADBE']
+    growth_stock_symbol_array = ['FIT', 'GPRO', 'NVDA']
+    index_stock_symbol_array = ['FB', 'AMZN', 'HMC']
+    quality_stock_symbol_array = ['JPM', 'WMT', 'BBY']
+    value_stock_symbol_array = ['TSLA', 'TWTR', 'GOOG']
 
     try:
 
@@ -134,7 +134,7 @@ def addRegion():
 
             if strategy == 'Ethical Investing':
                 print("RESULT for Ethical Investing:")
-                graph_results, graph_results_detailed = fetch_graph_results('Ethical Investing', investment_per_strategy, stock_symbol_array)
+                graph_results, graph_results_detailed = fetch_graph_results('Ethical Investing', investment_per_strategy, ethical_stock_symbol_array)
 
                 final_graph_results.append(['Ethical Investing', graph_results])
                 final_graph_results_detailed.append(['Ethical Investing', graph_results_detailed])
@@ -145,7 +145,7 @@ def addRegion():
 
             elif strategy == 'Growth Investing':
                 print("RESULT for Growth Investing:")
-                graph_results, graph_results_detailed = fetch_graph_results('Growth Investing', investment_per_strategy, growth_array)
+                graph_results, graph_results_detailed = fetch_graph_results('Growth Investing', investment_per_strategy, growth_stock_symbol_array)
 
                 final_graph_results.append(['Growth Investing', graph_results])
                 final_graph_results_detailed.append(['Growth Investing', graph_results_detailed])
@@ -156,7 +156,7 @@ def addRegion():
 
             elif strategy == 'Index Investing':
                 print("RESULT for Index Investing:")
-                graph_results, graph_results_detailed = fetch_graph_results('Index Investing', investment_per_strategy, index_array)
+                graph_results, graph_results_detailed = fetch_graph_results('Index Investing', investment_per_strategy, index_stock_symbol_array)
 
                 final_graph_results.append(['Index Investing', graph_results])
                 final_graph_results_detailed.append(['Index Investing', graph_results_detailed])
@@ -167,7 +167,7 @@ def addRegion():
 
             elif strategy == 'Quality Investing':
                 print("RESULT for Quality Investing:")
-                graph_results, graph_results_detailed = fetch_graph_results('Quality Investing', investment_per_strategy, quality_array)
+                graph_results, graph_results_detailed = fetch_graph_results('Quality Investing', investment_per_strategy, quality_stock_symbol_array)
 
                 final_graph_results.append(['Quality Investing', graph_results])
                 final_graph_results_detailed.append(['Quality Investing', graph_results_detailed])
@@ -178,7 +178,7 @@ def addRegion():
 
             elif strategy == 'Value Investing':
                 print("RESULT for Value Investing:")
-                graph_results, graph_results_detailed = fetch_graph_results('Value Investing', investment_per_strategy, value_array)
+                graph_results, graph_results_detailed = fetch_graph_results('Value Investing', investment_per_strategy, value_stock_symbol_array)
 
                 final_graph_results.append(['Value Investing', graph_results])
                 final_graph_results_detailed.append(['Value Investing', graph_results_detailed])
