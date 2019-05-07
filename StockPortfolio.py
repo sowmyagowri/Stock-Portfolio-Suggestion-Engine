@@ -112,14 +112,6 @@ def get_graph_results(strategy_name, investment_per_strategy, ethical_array):
 
     return graph_results, graph_results_detailed
 
-    def logout():
-        print("post meth call")
-        if request.method == 'POST':
-            if request.form['submit'] == 'Do Something':
-                print("inside do")
-            session['logged_in'] = False
-            return home()
-
 
 @app.route('/stockportfolio', methods=['POST'])
 def addRegion():

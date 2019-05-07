@@ -7,8 +7,6 @@ This application runs on Python 3
 Unzip the folder.
 To start install packages run the command:
 Pip install -r requirements.txt
-To create and populate the database:
-python dummy.py
 
 To run the application on local:
 comment out the code :
