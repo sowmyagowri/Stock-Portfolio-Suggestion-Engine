@@ -76,37 +76,22 @@
                     alert('You can select maximum ' + maxAllowed + ' strategies!!');
                 }
             });
-            $(#pills-logout-tab).onclick(function)(){
-              $(this).load("/login")
-            }
 
         </script>
   </head>
 
 <body onload="myFunction()">
-{% block content %}
-<nav class="navbar navbar-inverse" style="border-radius: 0px">
-<div class="navbar-header" style="float: right;margin-top: 4px; font-family: cursive">
-    <ul class="nav nav-pills mb-3" id="pills-tab" role="tablist">
-      <li class="nav-item">
-        <a class="nav-link active" id="pills-home-tab" data-toggle="pill" href="#pills-home" role="tab" aria-controls="pills-home" aria-selected="true">Home</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" id="pills-profile-tab" data-toggle="pill" href="#pills-profile" role="tab" aria-controls="pills-profile" aria-selected="false">Profile</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" id="pills-contact-tab" data-toggle="pill" href="#pills-contact" role="tab" aria-controls="pills-contact" aria-selected="false">Contact</a>
-      </li>
-      <li class "nav-item">
-         <a class="nav-link" id="pills-logout-tab" data-toggle="pill" href="#pills-logout" role="tab" aria-controls="pills-logout" aria-selected="false">Logout</a>
-      </li>
+    {% block content %}
+    <nav class="navbar navbar-inverse" style="border-radius: 0px">
+      <div class="navbar-header" style="float: right;margin-top: 4px; font-family: cursive">
+        <ul class="nav nav-pills mb-3" id="pills-tab" role="tablist">
+          <li class="nav-item">
+            <a class="nav-link active" id="pills-home-tab" data-toggle="pill" href="#pills-home" role="tab" aria-controls="pills-home" aria-selected="true">Home</a>
+          </li>
     </ul>
 </div>
 </nav>
-
-
-
-  <div class="container" align="center">
+<div class="container" align="center">
     <h1>Welcome to your Stock Portfolio</h1>
   </div>
   <!-- The video -->
@@ -126,10 +111,6 @@
         <label for="investment_value">Enter your investment value</label>
         <input style="width: 18%;" type="text" class="form-control" id="investment_value" name="investment_value" placeholder="Enter your investment value">
         </div>
-
-
-
-
 
         <label for="allotment" class="investment-value-label">Select the investment strategies (one or more) :</label><br>
 
@@ -184,45 +165,7 @@
       </fieldset>
     </form>
   </div>
-  <div style="margin-top: -1400px; margin-left: 373px; color: white;" class="tab-pane fade" id="pills-profile" role="tabpanel" aria-labelledby="pills-profile-tab">
-  Welcome to your profile.
-  <form method="post" action="" enctype="multipart/form-data">
-  <table width="332" height="210" border="0">
-    <tr>
-      <td width="155">Email</td>
-      <td width="167">admin@gmail.com</td>
-    </tr>
-    <tr>
-      <td>Username</td>
-
-      <td>admin</td>
-    </tr>
-
-  </table>
-  </form>
-  </div>
-  <div style="margin-top: -1400px; margin-left: 323px; color: white;"  class="tab-pane fade" id="pills-contact" role="tabpanel" aria-labelledby="pills-contact-tab">
-  Meet the team-Rutvik Pensionwar,Anup Kulkarni,Rucha Apte,Shripal Modani
-
-
-  <ul >
-    <li class="imageClass"  id="img_1"><img src="../static/images/rutvik.jpg" width="15%" height="7%"></li>
-    <li class="imageClass" id="img_2"><img src="../static/images/anup.jpg" width="15%" height="10%"></li>
-    <li class="imageClass" id="img_3"><img src="../static/images/rucha.jpg" width="20%" height="20%"></li>
-    <li class="imageClass" id="img_4"><img src="../static/images/shripal.jpg" width="15%" height="10%"></li>
-</ul>
-  </div>
-  <div style="color: white;" class="tab-pane fade" id="pills-logout" role="tabpanel" aria-labelledby="pills-logout-tab">
-    <form id="contact" method="post" action="/logout" class="container">
-    <fieldset>
-    <h1>Are you sure you want to logout?<h1>
-
-    <input style="margin-top: 40px" class="btn btn-primary" type="submit" name="submit" id="submit" value="Yes">
-
-    </fieldset>
-    </form>
-</div>
-{%- endblock %}
+  {%- endblock %}
 
 </body>
 </html>
