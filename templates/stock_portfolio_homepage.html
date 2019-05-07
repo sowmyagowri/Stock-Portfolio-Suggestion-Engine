@@ -76,47 +76,32 @@
                     alert('You can select maximum ' + maxAllowed + ' strategies!!');
                 }
             });
-
         </script>
   </head>
-
-<body onload="myFunction()">
-    {% block content %}
-    <nav class="navbar navbar-inverse" style="border-radius: 0px">
-      <div class="navbar-header" style="float: right;margin-top: 4px; font-family: cursive">
-        <ul class="nav nav-pills mb-3" id="pills-tab" role="tablist">
-          <li class="nav-item">
-            <a class="nav-link active" id="pills-home-tab" data-toggle="pill" href="#pills-home" role="tab" aria-controls="pills-home" aria-selected="true">Home</a>
-          </li>
-    </ul>
-</div>
-</nav>
+<body>
+{% block content %}
 <div class="container" align="center">
     <h1>Welcome to your Stock Portfolio</h1>
-  </div>
-  <!-- The video -->
-  <video autoplay muted loop id="myVideo" width="1000" height="20">
-    <source src="../static/images/numbers.mp4" type="video/mp4">
-  </video>
+</div>
 
-<div class="tab-content" id="pills-tabContent">
-  <div class="tab-pane fade show active" id="pills-home" role="tabpanel" aria-labelledby="pills-home-tab">
+<!-- The video -->
+<video autoplay muted loop id="myVideo" width="1000" height="20">
+  <source src="../static/images/numbers.mp4" type="video/mp4">
+</video>
+
+<div>
+  <div>
       <form id="contact" method="post" action="/stockportfolio" class="container">
       <fieldset>
       	<!--<br>-->
         <!--<label class="jumbotron" for="investment_value">Enter your investment value 22:</label>-->
         <!--<input type="text" id="investment_value" name="investment_value" /><br><br>-->
-
         <div class="form-group">
-        <label for="investment_value">Enter your investment value</label>
-        <input style="width: 18%;" type="text" class="form-control" id="investment_value" name="investment_value" placeholder="Enter your investment value">
+          <label for="investment_value">Enter your investment value</label>
+          <input style="width: 18%;" type="text" class="form-control" id="investment_value" name="investment_value" placeholder="Enter your investment value">
         </div>
-
         <label for="allotment" class="investment-value-label">Select the investment strategies (one or more) :</label><br>
-
-
         <div class="card">
-
           <img src="../static/images/ethical.jpg" alt="Avatar" style="width:100%">
           <div class="container1" style="margin-top: 15px;">
             <input class= "single-checkbox" type="checkbox" name="strategy" value="Ethical Investing"><h4 style="margin-top: -22px;
@@ -155,13 +140,9 @@
             margin-left: 20px;"><b>Value Investing</b></h4>
           </div>
         </div>
-
+        
         <!--<input type="submit" name="submit" id="submit" value="Calculate" />-->
-
         <input style="margin-top: 40px" class="btn btn-primary" type="submit" name="submit" id="submit" value="Invest!!">
-
-
-
       </fieldset>
     </form>
   </div>
