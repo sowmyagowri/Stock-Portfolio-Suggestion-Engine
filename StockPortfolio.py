@@ -21,13 +21,12 @@ def home():
 
 def fetch_graph_results(strategy_name, investment_per_strategy, stock_symbol_array):
     stock_details = []
-    last_five_dates = []
+    five_days_history = []
     investment_per_company = investment_per_strategy / 3
 
     for stock_symbol in stock_symbol_array:
 
         ts = TimeSeries(key='OD5NJODCQXKECCKH')
-        # today_date = datetime.datetime.today().strftime('%Y-%m-%d')
         data, meta_data = ts.get_daily_adjusted(stock_symbol)
 
         if meta_data:
@@ -35,11 +34,9 @@ def fetch_graph_results(strategy_name, investment_per_strategy, stock_symbol_arr
             count = 0
             for each_entry in data:
                 if count < 5:
-                    # print(each_entry)
-                    # print(data[each_entry])
                     stock_details.append(
                         [strategy_name, stock_symbol, each_entry, data[each_entry]['5. adjusted close']])
-                    last_five_dates.append(each_entry)
+                    five_days_history.append(each_entry)
                     count = count + 1
                 else:
                     break
@@ -62,53 +59,53 @@ def fetch_graph_results(strategy_name, investment_per_strategy, stock_symbol_arr
     graph_results_detailed = []
 
     for entry in stock_details:
-        if entry[2] == sorted(set(last_five_dates))[0]:
+        if entry[2] == sorted(set(five_days_history))[0]:
             first_day.append([entry[1], entry[3]])
             no_of_stocks_per_company = math.floor(investment_per_company / float(entry[3]))
             first_day_company_stocks.append([entry[1], round(float(entry[3]), 2), no_of_stocks_per_company])
             first_day_investment += no_of_stocks_per_company * float(entry[3])
 
-    graph_results.append([sorted(set(last_five_dates))[0], round(first_day_investment, 2)])
+    graph_results.append([sorted(set(five_days_history))[0], round(first_day_investment, 2)])
 
     print("first_day", first_day)
     print("first_day_company_stocks ", first_day_company_stocks)
 
     for entry in stock_details:
 
-        if entry[2] == sorted(set(last_five_dates))[1]:
+        if entry[2] == sorted(set(five_days_history))[1]:
             for company in first_day_company_stocks:
                 if company[0] == entry[1]:
                     second_day_company_stocks.append([entry[1], round(float(entry[3]), 2), company[2]])
                     second_day_investment += (float(entry[3]) * company[2])
 
-        elif entry[2] == sorted(set(last_five_dates))[2]:
+        elif entry[2] == sorted(set(five_days_history))[2]:
             for company in first_day_company_stocks:
                 if company[0] == entry[1]:
                     third_day_company_stocks.append([entry[1], round(float(entry[3]), 2), company[2]])
                     third_day_investment += (float(entry[3]) * company[2])
 
-        elif entry[2] == sorted(set(last_five_dates))[3]:
+        elif entry[2] == sorted(set(five_days_history))[3]:
             for company in first_day_company_stocks:
                 if company[0] == entry[1]:
                     forth_day_company_stocks.append([entry[1], round(float(entry[3]), 2), company[2]])
                     forth_day_investment += (float(entry[3]) * company[2])
 
-        elif entry[2] == sorted(set(last_five_dates))[4]:
+        elif entry[2] == sorted(set(five_days_history))[4]:
             for company in first_day_company_stocks:
                 if company[0] == entry[1]:
                     fifth_day_company_stocks.append([entry[1], round(float(entry[3]), 2), company[2]])
                     fifth_day_investment += (float(entry[3]) * company[2])
 
-    graph_results.append([sorted(set(last_five_dates))[1], round(second_day_investment, 2)])
-    graph_results.append([sorted(set(last_five_dates))[2], round(third_day_investment, 2)])
-    graph_results.append([sorted(set(last_five_dates))[3], round(forth_day_investment, 2)])
-    graph_results.append([sorted(set(last_five_dates))[4], round(fifth_day_investment, 2)])
+    graph_results.append([sorted(set(five_days_history))[1], round(second_day_investment, 2)])
+    graph_results.append([sorted(set(five_days_history))[2], round(third_day_investment, 2)])
+    graph_results.append([sorted(set(five_days_history))[3], round(forth_day_investment, 2)])
+    graph_results.append([sorted(set(five_days_history))[4], round(fifth_day_investment, 2)])
 
-    graph_results_detailed.append([sorted(set(last_five_dates))[0], first_day_company_stocks])
-    graph_results_detailed.append([sorted(set(last_five_dates))[1], second_day_company_stocks])
-    graph_results_detailed.append([sorted(set(last_five_dates))[2], third_day_company_stocks])
-    graph_results_detailed.append([sorted(set(last_five_dates))[3], forth_day_company_stocks])
-    graph_results_detailed.append([sorted(set(last_five_dates))[4], fifth_day_company_stocks])
+    graph_results_detailed.append([sorted(set(five_days_history))[0], first_day_company_stocks])
+    graph_results_detailed.append([sorted(set(five_days_history))[1], second_day_company_stocks])
+    graph_results_detailed.append([sorted(set(five_days_history))[2], third_day_company_stocks])
+    graph_results_detailed.append([sorted(set(five_days_history))[3], forth_day_company_stocks])
+    graph_results_detailed.append([sorted(set(five_days_history))[4], fifth_day_company_stocks])
 
     return graph_results, graph_results_detailed
 
@@ -205,8 +202,6 @@ def addRegion():
 
     except requests.ConnectionError:
         print('No Connection')
-
-# program
 
 if __name__=='__main__':
     app.secret_key = os.urandom(12)
