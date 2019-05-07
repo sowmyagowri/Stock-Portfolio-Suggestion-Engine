@@ -67,9 +67,6 @@ def fetch_graph_results(strategy_name, investment_per_strategy, stock_symbol_arr
 
     graph_results.append([sorted(set(five_days_history))[0], round(first_day_investment, 2)])
 
-    print("first_day", first_day)
-    print("first_day_company_stocks ", first_day_company_stocks)
-
     for entry in stock_details:
 
         if entry[2] == sorted(set(five_days_history))[1]:
