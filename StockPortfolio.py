@@ -9,10 +9,10 @@ import os
 from flask_bootstrap import Bootstrap
 flag = False
 message=""
+key_value='JNPPKD3MTV2B37LK'
 
 app = Flask(__name__);
 Bootstrap(app)
-
 
 @app.route("/")
 
@@ -26,7 +26,7 @@ def fetch_graph_results(strategy_name, investment_per_strategy, stock_symbol_arr
 
     for stock_symbol in stock_symbol_array:
 
-        ts = TimeSeries(key='OD5NJODCQXKECCKH')
+        ts = TimeSeries(key=key_value)
         data, meta_data = ts.get_daily_adjusted(stock_symbol)
 
         if meta_data:
@@ -142,6 +142,7 @@ def addRegion():
 
             elif strategy == 'Growth Investing':
                 print("RESULT for Growth Investing:")
+                key_value='4NMEJBTG559N501P'
                 graph_results, graph_results_detailed = fetch_graph_results('Growth Investing', investment_per_strategy, growth_stock_symbol_array)
 
                 final_graph_results.append(['Growth Investing', graph_results])
