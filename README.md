@@ -10,4 +10,9 @@ Developed in python and uses Alpha Vantage API for real-time stock data.
 - Navigate to the project folder in cmd
 - Install required dependencies using the command
   Pip install -r requirements.txt
-- Run the application use the command python index.py and then open your preferred web browser and type localhost:3000
+- Run the application use the command python StockPortfolio.py and then open your preferred web browser and type localhost:3000
+
+
+![2019-05-17 (3)](https://user-images.githubusercontent.com/25673997/57957620-c1f34180-78b1-11e9-865c-9d90a3f4b2ce.png)
+![2019-05-17 (4)](https://user-images.githubusercontent.com/25673997/57957637-cd466d00-78b1-11e9-9417-5b0e0d814d35.png)
+![2019-05-17 (2)](https://user-images.githubusercontent.com/25673997/57957644-d1728a80-78b1-11e9-870f-08b5a6bbf1c6.png)
