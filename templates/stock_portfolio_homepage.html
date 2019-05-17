@@ -102,41 +102,56 @@ header.special {
   width:40%;
 }
 </style>
+<script>
+  function checkSelected(element) {
+    var count = 0;
+    var group = document.getElementsByName("strategy");
+    for (var i = 0; i < group.length; i++) {
+      if (group[i].checked) {
+        count = count + 1
+      }
+    }
+    console.log(count);
+    if (count > 2)
+    {
+      alert('Select maximum 2 options!');
+      element.checked = false;
+    }
+  }
+</script>
 
 {% extends "bootstrap/base.html" %}
+
+{# Loads some of the macros included with Flask-Bootstrap. We are using the
+  utils module here to automatically render Flask's flashed messages in a
+  bootstrap friendly manner #}
+{% import "bootstrap/utils.html" as utils %}
 
 <html lang="en">
 
   <head>
     <meta charset="utf-8">
     <title>Stock Portfolio Suggestion Engine</title>
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+    <!-- <script src="https://code.jquery.com/jquery-1.9.1.min.js" integrity="sha256-wS9gmOZBqsqWxgIVgA8Y9WcQOa7PgSIX+rPA0VL2rbQ=" crossorigin="anonymous"></script> -->
+    <!-- <script type="text/javascript" src="{{ url_for('static', filename='stock.js') }}"></script> -->
+
+    <!-- <script type="text/javascript">
+     $(document).ready(function () {
+        $("input[name='strategy']").change(function () {
+            var maxAllowed = 2;
+            var cnt = $("input[name='strategy']:checked").length;
+            if (cnt > maxAllowed) {
+                $(this).prop("checked", "");
+                alert('You can select maximum ' + maxAllowed + ' strategies!!');
+            }
+        });
+    </script> -->
     <link rel= "stylesheet" type= "text/css" href= "{{ url_for('static',filename='css/stock-portfolio-homepage.css') }}">
-{#<script src="jquery-3.3.1.min.js"></script>#}
+    <!-- <script src="jquery-3.3.1.min.js"></script> -->
+    
+    </head>
 
-{#      <script#}
-{#  src="https://code.jquery.com/jquery-3.3.1.min.js"#}
-{#  integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="#}
-{#  crossorigin="anonymous"></script>#}
-      <script
-          src="https://code.jquery.com/jquery-1.9.1.min.js"
-          integrity="sha256-wS9gmOZBqsqWxgIVgA8Y9WcQOa7PgSIX+rPA0VL2rbQ="
-          crossorigin="anonymous">
-
-      </script>
-      <script>
-        $(document).ready(function () {
-
-            $("input[name='strategy']").change(function () {
-                var maxAllowed = 2;
-                var cnt = $("input[name='strategy']:checked").length;
-                if (cnt > maxAllowed) {
-                    $(this).prop("checked", "");
-                    alert('You can select maximum ' + maxAllowed + ' strategies!!');
-                }
-            });
-        </script>
-  </head>
-  
 <body class="is-preload">
 {% block content %}
 <!-- Header -->
@@ -152,8 +167,7 @@ header.special {
           <div>
           <h3>ENTER YOUR INVESTMENT VALUE</h3>
         </div>
-          <input type="text"class="form-control" id="investment_value" name="investment_value" >
-
+          <input type="number" class="form-control" id="investment_value" name="investment_value" min="5000" required/>
         </div>
         <div style = "margin-top: 5%">
             <h3 style = "margin-right: 5%">SELECT INVESTING STRATEGIES (max 2) :</h3>
@@ -164,7 +178,8 @@ header.special {
           <div class="container1" style="margin-top: 5%; margin-bottom: 5%">
             <div style = "margin-bottom: 5%">
             <img src="../static/images/ethical.jpg" alt="Avatar" style="width:300px; height:300px;"></div>
-            <div><input class= "single-checkbox" type="checkbox" name="strategy" value="Ethical Investing"><h4 style="margin-top: -22px;
+            <div><input class= "single-checkbox" type="checkbox" onclick="checkSelected(this)" name="strategy" value="Ethical Investing"/>
+            <h4 style="margin-top: -22px;
             margin-left: 20px; font-family: Raleway, Arial, Helvetica, sans-serif;">ETHICAL INVESTING</h4></div>
           </div>
         </div>
@@ -173,7 +188,7 @@ header.special {
           <div class="container1" style="margin-top: 5%; margin-bottom: 5%">
               <div style = "margin-bottom: 5%">
               <img src="../static/images/growthInvesting.jpg" alt="Avatar" style="width:300px; height:300px;"></div>
-              <div><input class= "single-checkbox" type="checkbox" name="strategy" value="Growth Investing"><h4 style="margin-top: -22px;
+              <div><input class= "single-checkbox" type="checkbox" onclick="checkSelected(this)" name="strategy" value="Growth Investing"/><h4 style="margin-top: -22px;
               margin-left: 20px; font-family: Raleway, Arial, Helvetica, sans-serif;">GROWTH INVESTING</h4></div>
           </div>
         </div>
@@ -183,7 +198,7 @@ header.special {
               <div style = "margin-bottom: 5%">
               <img src="../static/images/index.jpg" alt="Avatar" style="width:300px; height:300px;"></div>
               <div>
-              <input class= "single-checkbox" type="checkbox" name="strategy" value="Index Investing"><h4 style="margin-top: -22px;
+              <input class= "single-checkbox"  type="checkbox" onclick="checkSelected(this)" name="strategy" value="Index Investing"/><h4 style="margin-top: -22px;
               margin-left: 20px; font-family: Raleway, Arial, Helvetica, sans-serif;">INDEX INVESTING</h4></div>
             </div>
         </div>
@@ -193,7 +208,7 @@ header.special {
             <div style = "margin-bottom: 5%">
             <img src="../static/images/quality.jpg" alt="Avatar" style="width:300px; height:300px;"></div>
             <div>
-            <input class= "single-checkbox" type="checkbox" name="strategy" value="Quality Investing"><h4 style="margin-top: -22px;
+            <input class= "single-checkbox"  type="checkbox" onclick="checkSelected(this)" name="strategy" value="Quality Investing"/><h4 style="margin-top: -22px;
             margin-left: 20px; font-family: Raleway, Arial, Helvetica, sans-serif;">QUALITY INVESTING</h4></div>
           </div>
           </div>
@@ -202,7 +217,7 @@ header.special {
            <div class="container1" style="margin-top: 5%; margin-bottom: 5%">
               <div style = "margin-bottom: 5%">
               <img src="../static/images/value.jpg" alt="Avatar" style="width:300px; height:300px;"></div>
-              <div><input class= "single-checkbox" type="checkbox" name="strategy" value="Value Investing"><h4 style="margin-top: -22px;
+              <div><input class= "single-checkbox" type="checkbox" onclick="checkSelected(this)" name="strategy" value="Value Investing"/><h4 style="margin-top: -22px;
               margin-left: 20px; font-family: Raleway, Arial, Helvetica, sans-serif;">VALUE INVESTING</h4></div>
            </div>
         </div>
@@ -218,6 +233,7 @@ header.special {
     </form>
   </div>
   {%- endblock %}
-
 </body>
 </html>
+
+
