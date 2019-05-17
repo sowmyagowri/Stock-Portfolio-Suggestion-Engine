@@ -18,4 +18,9 @@ Developed in python and uses Alpha Vantage API for real-time stock data.
 ![2019-05-17 (4)](https://user-images.githubusercontent.com/25673997/57957637-cd466d00-78b1-11e9-9417-5b0e0d814d35.png)
 
 When Ethical Investing Strategy is selected
+
 ![2019-05-17 (2)](https://user-images.githubusercontent.com/25673997/57957644-d1728a80-78b1-11e9-870f-08b5a6bbf1c6.png)
+
+When both Ethical Investing Strategy and Growth Investing strategy are selected
+
+![2019-05-17 (5)](https://user-images.githubusercontent.com/25673997/57959198-75ab0000-78b7-11e9-868d-3e3dfe50b9bf.png)
