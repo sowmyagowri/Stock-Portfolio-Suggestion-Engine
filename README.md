@@ -6,8 +6,8 @@ Developed in python and uses Alpha Vantage API for real-time stock data.
 
 ## Steps to run the application:
 
-- Python version 3.6 is required and pip is required
+- Python version 3.6 and pip are required
 - Navigate to the project folder in cmd
 - Install required dependencies using the command
   Pip install -r requirements.txt
-- Run the application use the command python index.py and then open your preferred web browser and type localhost:5000
+- Run the application use the command python index.py and then open your preferred web browser and type localhost:3000
