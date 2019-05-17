@@ -2,6 +2,7 @@ from flask import Flask, render_template, request,flash, redirect, session, abor
 
 from alpha_vantage.timeseries import TimeSeries
 import datetime
+import time
 import requests
 import calendar,math
 import os
@@ -9,7 +10,6 @@ import os
 from flask_bootstrap import Bootstrap
 flag = False
 message=""
-key_value='JNPPKD3MTV2B37LK'
 
 app = Flask(__name__);
 Bootstrap(app)
@@ -26,7 +26,7 @@ def fetch_graph_results(strategy_name, investment_per_strategy, stock_symbol_arr
 
     for stock_symbol in stock_symbol_array:
 
-        ts = TimeSeries(key=key_value)
+        ts = TimeSeries(key='L7LPZFOTDXED8KS0')
         data, meta_data = ts.get_daily_adjusted(stock_symbol)
 
         if meta_data:
@@ -142,7 +142,8 @@ def addRegion():
 
             elif strategy == 'Growth Investing':
                 print("RESULT for Growth Investing:")
-                key_value='4NMEJBTG559N501P'
+                # Wait for 1 minute before making the API Call
+                time.sleep(60)
                 graph_results, graph_results_detailed = fetch_graph_results('Growth Investing', investment_per_strategy, growth_stock_symbol_array)
 
                 final_graph_results.append(['Growth Investing', graph_results])
@@ -154,6 +155,8 @@ def addRegion():
 
             elif strategy == 'Index Investing':
                 print("RESULT for Index Investing:")
+                # Wait for 1 minute before making the API Call
+                time.sleep(60)
                 graph_results, graph_results_detailed = fetch_graph_results('Index Investing', investment_per_strategy, index_stock_symbol_array)
 
                 final_graph_results.append(['Index Investing', graph_results])
@@ -165,6 +168,8 @@ def addRegion():
 
             elif strategy == 'Quality Investing':
                 print("RESULT for Quality Investing:")
+                # Wait for 1 minute before making the API Call
+                time.sleep(60)
                 graph_results, graph_results_detailed = fetch_graph_results('Quality Investing', investment_per_strategy, quality_stock_symbol_array)
 
                 final_graph_results.append(['Quality Investing', graph_results])
@@ -176,6 +181,8 @@ def addRegion():
 
             elif strategy == 'Value Investing':
                 print("RESULT for Value Investing:")
+                # Wait for 1 minute before making the API Call
+                time.sleep(60)
                 graph_results, graph_results_detailed = fetch_graph_results('Value Investing', investment_per_strategy, value_stock_symbol_array)
 
                 final_graph_results.append(['Value Investing', graph_results])
