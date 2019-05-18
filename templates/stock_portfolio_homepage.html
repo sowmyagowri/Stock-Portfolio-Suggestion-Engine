@@ -129,6 +129,9 @@ header.special {
     if (count < 1)
     {
       alert('Select a strategy!');
+      return false;
+    } else {
+      return true;
     }
   }
 </script>
@@ -174,7 +177,7 @@ header.special {
 <div>
  
   <div class = "inner" style = "font-family: Raleway, Arial, Helvetica, sans-serif; margin-top: 2%" >
-      <form id="contact" method="post" action="/stockportfolio" class="container">
+      <form id="contact"  onsubmit="return checkSubmit(this)" method="post" action="/stockportfolio" class="container">
       <fieldset>
         <div class="form-group" style = "font-family: Raleway, Arial, Helvetica, sans-serif">
           <div>
@@ -237,7 +240,7 @@ header.special {
         <div class="card1">
            <div class="container1" style="margin-top: 5%; margin-bottom: 5%">
               <div style = "margin-left: 30%; margin-top: 30%;">
-                  <input style="width : 150px; height: 50px; font-family: Raleway, Arial, Helvetica, sans-serif; font-size: 20px;" class = "btn btn-primary" onclick = "checkSubmit(this)" type="submit" name="submit" id="submit" value="SUBMIT">
+                  <input style="width : 150px; height: 50px; font-family: Raleway, Arial, Helvetica, sans-serif; font-size: 20px;" class = "btn btn-primary" type="submit" name="submit" id="submit" value="SUBMIT">
               </div>
             </div>
           </div>
