@@ -16,7 +16,7 @@ Bootstrap(app)
 @app.route("/")
 
 def home():
-    return render_template("stock_portfolio_homepage.html", **locals())
+    return render_template("Homepage.html", **locals())
 
 def fetch_graph_results(strategy_name, investment_per_strategy, stock_symbol_array):
     stock_details = []
@@ -194,10 +194,10 @@ def addRegion():
         print("Length test : ", len(final_graph_results), len(final_graph_results_detailed))
 
         if len(final_graph_results) == 1 and len(final_graph_results_detailed) == 1:
-            return render_template("stock_portfolio_results.html", fgr=final_graph_results, pgrd=final_graph_results_detailed)
+            return render_template("Portfolio_One Strategy.html", fgr=final_graph_results, pgrd=final_graph_results_detailed)
 
         elif len(final_graph_results) == 2 and len(final_graph_results_detailed) == 2:
-            return render_template("stock_portfolio_results_2.html", fgr=final_graph_results, pgrd=final_graph_results_detailed)
+            return render_template("Portfolio_Two Strategies.html", fgr=final_graph_results, pgrd=final_graph_results_detailed)
         else:
             print("Select more than 2 strategies")
 
