@@ -14,7 +14,6 @@ app = Flask(__name__);
 Bootstrap(app)
 
 @app.route("/")
-
 def home():
     return render_template("Homepage.html", **locals())
 
@@ -107,7 +106,7 @@ def fetch_graph_results(strategy_name, investment_per_strategy, stock_symbol_arr
 
 
 @app.route('/stockportfolio', methods=['POST'])
-def addRegion():
+def generateGraphs():
     investment_value = request.form['investment_value']
     investment_strategies = request.form.getlist('strategy')
     investment_per_strategy = int(investment_value) / len(investment_strategies)
@@ -191,7 +190,8 @@ def addRegion():
                 print("Detailed Graph Result : ", final_graph_results_detailed)
                 print("")
 
-        print("Length test : ", len(final_graph_results), len(final_graph_results_detailed))
+        print("Graph Result Length : ", len(final_graph_results))
+        print("Detailed Graph Result Length : ", len(final_graph_results_detailed))
 
         if len(final_graph_results) == 1 and len(final_graph_results_detailed) == 1:
             return render_template("Portfolio_One Strategy.html", fgr=final_graph_results, pgrd=final_graph_results_detailed)
@@ -199,13 +199,13 @@ def addRegion():
         elif len(final_graph_results) == 2 and len(final_graph_results_detailed) == 2:
             return render_template("Portfolio_Two Strategies.html", fgr=final_graph_results, pgrd=final_graph_results_detailed)
         else:
-            print("Select more than 2 strategies")
+            print("Strategy Selection Error")
 
     except ValueError:
-        print('No Symbol found')
+        print('Stock Symbol NOT found')
 
     except requests.ConnectionError:
-        print('No Connection')
+        print('Connection Error')
 
 if __name__=='__main__':
     app.secret_key = os.urandom(12)
