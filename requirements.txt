@@ -1,5 +1,4 @@
-Flask
-gunicorn
-alpha_vantage
+flask
 flask-bootstrap
-datetime
+alpha_vantage
+requests

@@ -1,9 +1,9 @@
 from flask import Flask, render_template, request,flash, redirect, session, abort
 from flask_bootstrap import Bootstrap
 from alpha_vantage.timeseries import TimeSeries
+import requests
 import datetime
 import time
-import requests
 import calendar,math
 import os
 
