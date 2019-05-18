@@ -2,7 +2,7 @@
 
 Stock Portfolio Suggestion Engine that uses techniques like growth investing, ethical investing, value investing, index investing and quality investing to suggest the best investment options.
 
-Developed in python and uses Alpha Vantage API for real-time stock data.
+Developed in python using Alpha Vantage API for real-time stock data.
 
 ## Steps to run the application:
 
