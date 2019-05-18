@@ -15,7 +15,7 @@ Developed in python and uses Alpha Vantage API for real-time stock data.
 ### How can I change port, if port 3000 is occupied?
 
 - Open StockPortfolio.py file
-- Change '3000' to currently available port number in line 215 (app.run(debug=True, port=3000))
+- Change '3000' to currently available port number in line 212 (app.run(debug=True, port=3000))
 
 ![2019-05-17 (3)](https://user-images.githubusercontent.com/25673997/57957620-c1f34180-78b1-11e9-865c-9d90a3f4b2ce.png)
 
