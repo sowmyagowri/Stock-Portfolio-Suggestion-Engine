@@ -42,11 +42,11 @@ def fetch_graph_results(strategy_name, investment_per_strategy, stock_symbol_arr
 
     first_day = []
 
-    first_day_company_stocks = []
-    second_day_company_stocks = []
-    third_day_company_stocks = []
-    forth_day_company_stocks = []
-    fifth_day_company_stocks = []
+    first_day_history = []
+    second_day_history = []
+    third_day_history = []
+    fourth_day_history = []
+    fifth_day_history = []
 
     first_day_investment = 0
     second_day_investment = 0
@@ -61,7 +61,7 @@ def fetch_graph_results(strategy_name, investment_per_strategy, stock_symbol_arr
         if entry[2] == sorted(set(five_days_history))[0]:
             first_day.append([entry[1], entry[3]])
             no_of_stocks_per_company = math.floor(investment_per_company / float(entry[3]))
-            first_day_company_stocks.append([entry[1], round(float(entry[3]), 2), no_of_stocks_per_company])
+            first_day_history.append([entry[1], round(float(entry[3]), 2), no_of_stocks_per_company])
             first_day_investment += no_of_stocks_per_company * float(entry[3])
 
     graph_results.append([sorted(set(five_days_history))[0], round(first_day_investment, 2)])
@@ -69,27 +69,27 @@ def fetch_graph_results(strategy_name, investment_per_strategy, stock_symbol_arr
     for entry in stock_details:
 
         if entry[2] == sorted(set(five_days_history))[1]:
-            for company in first_day_company_stocks:
+            for company in first_day_history:
                 if company[0] == entry[1]:
-                    second_day_company_stocks.append([entry[1], round(float(entry[3]), 2), company[2]])
+                    second_day_history.append([entry[1], round(float(entry[3]), 2), company[2]])
                     second_day_investment += (float(entry[3]) * company[2])
 
         elif entry[2] == sorted(set(five_days_history))[2]:
-            for company in first_day_company_stocks:
+            for company in first_day_history:
                 if company[0] == entry[1]:
-                    third_day_company_stocks.append([entry[1], round(float(entry[3]), 2), company[2]])
+                    third_day_history.append([entry[1], round(float(entry[3]), 2), company[2]])
                     third_day_investment += (float(entry[3]) * company[2])
 
         elif entry[2] == sorted(set(five_days_history))[3]:
-            for company in first_day_company_stocks:
+            for company in first_day_history:
                 if company[0] == entry[1]:
-                    forth_day_company_stocks.append([entry[1], round(float(entry[3]), 2), company[2]])
+                    fourth_day_history.append([entry[1], round(float(entry[3]), 2), company[2]])
                     forth_day_investment += (float(entry[3]) * company[2])
 
         elif entry[2] == sorted(set(five_days_history))[4]:
-            for company in first_day_company_stocks:
+            for company in first_day_history:
                 if company[0] == entry[1]:
-                    fifth_day_company_stocks.append([entry[1], round(float(entry[3]), 2), company[2]])
+                    fifth_day_history.append([entry[1], round(float(entry[3]), 2), company[2]])
                     fifth_day_investment += (float(entry[3]) * company[2])
 
     graph_results.append([sorted(set(five_days_history))[1], round(second_day_investment, 2)])
@@ -97,11 +97,11 @@ def fetch_graph_results(strategy_name, investment_per_strategy, stock_symbol_arr
     graph_results.append([sorted(set(five_days_history))[3], round(forth_day_investment, 2)])
     graph_results.append([sorted(set(five_days_history))[4], round(fifth_day_investment, 2)])
 
-    graph_results_detailed.append([sorted(set(five_days_history))[0], first_day_company_stocks])
-    graph_results_detailed.append([sorted(set(five_days_history))[1], second_day_company_stocks])
-    graph_results_detailed.append([sorted(set(five_days_history))[2], third_day_company_stocks])
-    graph_results_detailed.append([sorted(set(five_days_history))[3], forth_day_company_stocks])
-    graph_results_detailed.append([sorted(set(five_days_history))[4], fifth_day_company_stocks])
+    graph_results_detailed.append([sorted(set(five_days_history))[0], first_day_history])
+    graph_results_detailed.append([sorted(set(five_days_history))[1], second_day_history])
+    graph_results_detailed.append([sorted(set(five_days_history))[2], third_day_history])
+    graph_results_detailed.append([sorted(set(five_days_history))[3], fourth_day_history])
+    graph_results_detailed.append([sorted(set(five_days_history))[4], fifth_day_history])
 
     return graph_results, graph_results_detailed
 
@@ -112,8 +112,8 @@ def addRegion():
     investment_strategies = request.form.getlist('strategy')
     investment_per_strategy = int(investment_value) / len(investment_strategies)
 
-    print("investment_value", investment_value)
-    print("investment_strategies", investment_strategies)
+    print("Input Investment Value", investment_value)
+    print("Input Investment Strategies", investment_strategies)
 
     ethical_stock_symbol_array = ['AAPL', 'MSFT', 'ADBE']
     growth_stock_symbol_array = ['FIT', 'GPRO', 'NVDA']
@@ -135,8 +135,8 @@ def addRegion():
                 final_graph_results.append(['Ethical Investing', graph_results])
                 final_graph_results_detailed.append(['Ethical Investing', graph_results_detailed])
 
-                print("final_graph_results : ", final_graph_results)
-                print("final_graph_results_detailed : ", final_graph_results_detailed)
+                print("Graph Result : ", final_graph_results)
+                print("Detailed Graph Result : ", final_graph_results_detailed)
                 print("")
 
             elif strategy == 'Growth Investing':
@@ -148,8 +148,8 @@ def addRegion():
                 final_graph_results.append(['Growth Investing', graph_results])
                 final_graph_results_detailed.append(['Growth Investing', graph_results_detailed])
 
-                print("final_graph_results : ", final_graph_results)
-                print("final_graph_results_detailed : ", final_graph_results_detailed)
+                print("Graph Result : ", final_graph_results)
+                print("Detailed Graph Result : ", final_graph_results_detailed)
                 print("")
 
             elif strategy == 'Index Investing':
@@ -161,8 +161,8 @@ def addRegion():
                 final_graph_results.append(['Index Investing', graph_results])
                 final_graph_results_detailed.append(['Index Investing', graph_results_detailed])
 
-                print("final_graph_results : ", final_graph_results)
-                print("final_graph_results_detailed : ", final_graph_results_detailed)
+                print("Graph Result : ", final_graph_results)
+                print("Detailed Graph Result : ", final_graph_results_detailed)
                 print("")
 
             elif strategy == 'Quality Investing':
@@ -174,8 +174,8 @@ def addRegion():
                 final_graph_results.append(['Quality Investing', graph_results])
                 final_graph_results_detailed.append(['Quality Investing', graph_results_detailed])
 
-                print("final_graph_results : ", final_graph_results)
-                print("final_graph_results_detailed : ", final_graph_results_detailed)
+                print("Graph Result : ", final_graph_results)
+                print("Detailed Graph Result : ", final_graph_results_detailed)
                 print("")
 
             elif strategy == 'Value Investing':
@@ -187,8 +187,8 @@ def addRegion():
                 final_graph_results.append(['Value Investing', graph_results])
                 final_graph_results_detailed.append(['Value Investing', graph_results_detailed])
 
-                print("final_graph_results : ", final_graph_results)
-                print("final_graph_results_detailed : ", final_graph_results_detailed)
+                print("Graph Result : ", final_graph_results)
+                print("Detailed Graph Result : ", final_graph_results_detailed)
                 print("")
 
         print("Length test : ", len(final_graph_results), len(final_graph_results_detailed))
@@ -209,6 +209,4 @@ def addRegion():
 
 if __name__=='__main__':
     app.secret_key = os.urandom(12)
-    # app.run(host='0.0.0.0',debug=True, port=5000)
-    # to run on local machine, use the below app.run
     app.run(debug=True, port=3000)
