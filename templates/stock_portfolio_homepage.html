@@ -118,6 +118,19 @@ header.special {
       element.checked = false;
     }
   }
+  function checkSubmit(element) {
+    var count = 0;
+    var group = document.getElementsByName("strategy");
+    for (var i = 0; i < group.length; i++) {
+      if (group[i].checked) {
+        count = count + 1
+      }
+    }
+    if (count < 1)
+    {
+      alert('Select a strategy!');
+    }
+  }
 </script>
 
 {% extends "bootstrap/base.html" %}
@@ -224,7 +237,7 @@ header.special {
         <div class="card1">
            <div class="container1" style="margin-top: 5%; margin-bottom: 5%">
               <div style = "margin-left: 30%; margin-top: 30%;">
-                  <input style="width : 150px; height: 50px; font-family: Raleway, Arial, Helvetica, sans-serif; font-size: 20px;" class = "btn btn-primary" type="submit" name="submit" id="submit" value="SUBMIT">
+                  <input style="width : 150px; height: 50px; font-family: Raleway, Arial, Helvetica, sans-serif; font-size: 20px;" class = "btn btn-primary" onclick = "checkSubmit(this)" type="submit" name="submit" id="submit" value="SUBMIT">
               </div>
             </div>
           </div>
